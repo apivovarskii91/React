@@ -5,26 +5,19 @@ interface HeaderProps {
     title: string
 }
 
+type ContentProps = {
+    text1: string
+    text2: string
+}
 const Header = (props: HeaderProps) => {
-    console.log(props)
     return <h1>Hello {props.title}</h1>
 }
 
-const Content = () => {
+const Content = (props: ContentProps) => {
     return (
         <React.Fragment>
-            <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Debitis rerum ea eveniet laudantium porro iure, repudiandae quis
-                sunt voluptate repellendus optio facere rem modi totam non
-                eligendi fuga a inventore.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-                accusantium impedit eum voluptatibus ad qui pariatur quae, eius
-                libero nulla quisquam harum saepe quidem mollitia enim molestiae
-                reprehenderit quasi beatae?
-            </p>
+            <p>{props.text1}</p>
+            <p>{props.text2}</p>
         </React.Fragment>
     )
 }
@@ -34,7 +27,16 @@ const App = () => {
         <>
             <Header title="React" />
             <Header title="TS" />
-            <Content />
+            <Content
+                text1="Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Debitis rerum ea eveniet laudantium porro iure, repudiandae quis
+                sunt voluptate repellendus optio facere rem modi totam non
+                eligendi fuga a inventore."
+                text2=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
+                accusantium impedit eum voluptatibus ad qui pariatur quae, eius
+                libero nulla quisquam harum saepe quidem mollitia enim molestiae
+                reprehenderit quasi beatae?"
+            />
         </>
     )
 } // компоненти
