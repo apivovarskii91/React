@@ -1,8 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-const Header = () => {
-    return <h1>Hello App.js</h1>
+interface HeaderProps {
+    title: string
+}
+
+const Header = (props: HeaderProps) => {
+    console.log(props)
+    return <h1>Hello {props.title}</h1>
 }
 
 const Content = () => {
@@ -27,7 +32,8 @@ const Content = () => {
 const App = () => {
     return (
         <>
-            <Header />
+            <Header title="React" />
+            <Header title="TS" />
             <Content />
         </>
     )
