@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Header from './Header'
+import { Header } from './Header'
 
 type ContentProps = {
     text1: string
