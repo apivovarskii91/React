@@ -1,21 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-
-interface HeaderProps {
-    title: string
-    year?: number
-}
+import Header from './Header'
 
 type ContentProps = {
     text1: string
     text2: string
-}
-const Header = ({ title, year }: HeaderProps) => {
-    return (
-        <h1>
-            Hello {title},{year}
-        </h1>
-    )
 }
 
 const Content = ({ text1, text2 }: ContentProps) => {
