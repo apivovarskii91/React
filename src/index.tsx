@@ -1,20 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Header } from './Header'
-
-type ContentProps = {
-    text1: string
-    text2: string
-}
-
-const Content = ({ text1, text2 }: ContentProps) => {
-    return (
-        <React.Fragment>
-            <p>{text1}</p>
-            <p>{text2}</p>
-        </React.Fragment>
-    )
-}
+import Content from './Content'
+import List from './List'
 
 const App = () => {
     return (
@@ -31,6 +19,7 @@ const App = () => {
                 libero nulla quisquam harum saepe quidem mollitia enim molestiae
                 reprehenderit quasi beatae?"
             />
+            <List item1="App" item2="React" item3="TS" />
         </>
     )
 } // компоненти
