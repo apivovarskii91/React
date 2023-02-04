@@ -6,7 +6,15 @@ type ContentProps = {
 const Content = ({ text1, text2 }: ContentProps) => {
     return (
         <>
-            <p>{text1}</p>
+            <p
+                style={{
+                    backgroundColor: 'purple',
+                    color: 'white',
+                    padding: '15px',
+                }}
+            >
+                {text1}
+            </p>
             <p>{text2}</p>
         </>
     )
