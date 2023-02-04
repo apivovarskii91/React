@@ -1,5 +1,12 @@
 .content {
   padding: 15px;
-  background-color: purple;
   color: white;
+}
+
+.purple{
+  background-color: purple;
+}
+
+.peru {
+  background-color: peru;
 }

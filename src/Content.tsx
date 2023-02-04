@@ -5,9 +5,10 @@ type ContentProps = {
 }
 
 const Content = ({ text1, text2 }: ContentProps) => {
+    let date = false
     return (
         <>
-            <p className="content">{text1}</p>
+            <p className={`content ${date ? 'purple' : 'peru'}`}>{text1}</p>
             <p>{text2}</p>
         </>
     )
