@@ -4,11 +4,12 @@ type ContentProps = {
 }
 
 const Content = ({ text1, text2 }: ContentProps) => {
+    let data = false
     return (
         <>
             <p
                 style={{
-                    backgroundColor: 'purple',
+                    backgroundColor: data ? 'purple' : 'green',
                     color: 'white',
                     padding: '15px',
                 }}
