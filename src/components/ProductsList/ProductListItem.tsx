@@ -66,7 +66,7 @@ class ProductListItem extends Component<Props, State> {
                     <button onClick={() => this.toggleFullDescription()}>
                         Show full description
                     </button>
-                    {this.state.show && (
+                    {this.state.show ? (
                         <p>
                             Lorem ipsum dolor, sit amet consectetur adipisicing
                             elit. Quas, reiciendis cum, tempora dolorum
@@ -74,7 +74,7 @@ class ProductListItem extends Component<Props, State> {
                             ut quis saepe quasi non porro impedit quia
                             recusandae rem incidunt?
                         </p>
-                    )}
+                    ) : null}
 
                     <div className="product-description">{description}</div>
                     <div className="product-features">Type:{type}</div>
