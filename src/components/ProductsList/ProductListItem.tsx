@@ -5,7 +5,6 @@ import {
     CardActions,
     TextField,
 } from '@mui/material'
-import { color } from '@mui/system'
 import { Component } from 'react'
 import './ProductsListItem.scss'
 
@@ -21,12 +20,14 @@ type Props = {
 type State = {
     count: number
     color: string
+    show: boolean
 }
 
 class ProductListItem extends Component<Props, State> {
     state = {
         count: 1,
         color: 'green',
+        show: false,
     }
 
     onIncrementClick = (num: number) => {
@@ -46,6 +47,12 @@ class ProductListItem extends Component<Props, State> {
         }))
     }
 
+    toggleFullDescription = () => {
+        this.setState((prevState: State) => ({
+            show: !prevState.show,
+        }))
+    }
+
     render() {
         const { title, description, type, capacity, price, image } = this.props
 
@@ -56,6 +63,19 @@ class ProductListItem extends Component<Props, State> {
                         <img src={image} alt="" />
                     </div>
                     <div className="product-title">{title}</div>
+                    <button onClick={() => this.toggleFullDescription()}>
+                        Show full description
+                    </button>
+                    {this.state.show && (
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing
+                            elit. Quas, reiciendis cum, tempora dolorum
+                            accusamus libero vitae molestiae explicabo eligendi
+                            ut quis saepe quasi non porro impedit quia
+                            recusandae rem incidunt?
+                        </p>
+                    )}
+
                     <div className="product-description">{description}</div>
                     <div className="product-features">Type:{type}</div>
                     <div className="product-features">
