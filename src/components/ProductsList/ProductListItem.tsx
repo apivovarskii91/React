@@ -24,28 +24,23 @@ type State = {
 }
 
 class ProductListItem extends Component<Props, State> {
-    constructor(props: Props) {
-        super(props)
-        this.state = {
-            count: 1,
-            color: 'green',
-        }
-        this.onIncrementClick = this.onIncrementClick.bind(this)
-        this.onDecrementClick = this.onDecrementClick.bind(this)
-        this.changeColor = this.changeColor.bind(this)
+    state = {
+        count: 1,
+        color: 'green',
     }
-    onIncrementClick() {
-        this.setState((prevState) => ({
+
+    onIncrementClick = () => {
+        this.setState((prevState: State) => ({
             count: prevState.count + 1,
         }))
     }
-    onDecrementClick() {
-        this.setState((prevState) => ({
+    onDecrementClick = () => {
+        this.setState((prevState: State) => ({
             count: prevState.count - 1,
         }))
     }
 
-    changeColor() {
+    changeColor = () => {
         this.setState((prevState: State) => ({
             color: prevState.color === 'green' ? 'red' : 'green',
         }))
