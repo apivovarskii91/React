@@ -5,6 +5,7 @@ import {
     CardActions,
     TextField,
 } from '@mui/material'
+import { color } from '@mui/system'
 import { Component } from 'react'
 import './ProductsListItem.scss'
 
@@ -45,7 +46,13 @@ class ProductListItem extends Component<Props, State> {
     }
 
     changeColor() {
-        this.setState({ color: 'red' })
+        this.setState((prevState: State) => {
+            if (prevState.color === 'green') {
+                return { color: 'red' }
+            } else {
+                return { color: 'green' }
+            }
+        })
     }
 
     render() {
