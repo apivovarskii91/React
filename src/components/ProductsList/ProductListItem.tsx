@@ -28,7 +28,7 @@ const ProductListItem = ({
     const [count, setCount] = useState<number>(1)
 
     const onIncrement = () => {
-        setCount(count + 1)
+        setCount((prevState: number) => prevState + 1)
     }
 
     const onDecrement = () => {
@@ -47,11 +47,19 @@ const ProductListItem = ({
                 <div className="product-features">Capacity:{capacity}Gb</div>
                 <div className="product-price">Price:{price}$</div>
                 <div className="product-quantity">
-                    <Button variant="outlined" onClick={() => onDecrement()}>
+                    <Button
+                        variant="outlined"
+                        onClick={() => onDecrement()}
+                        disabled={count <= 1}
+                    >
                         -
                     </Button>
                     <TextField size="small" value={count} />
-                    <Button variant="outlined" onClick={() => onIncrement()}>
+                    <Button
+                        variant="outlined"
+                        onClick={() => onIncrement()}
+                        disabled={count >= 10}
+                    >
                         +
                     </Button>
                 </div>
