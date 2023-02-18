@@ -30,7 +30,7 @@ const App = (props: Props) => {
             <button onClick={() => addProductToCart(5, 500)}>
                 Add to cart (5 count, 500 $ - price)
             </button>
-            <Main />
+            <Main addProductToCart={addProductToCart} />
             <Footer />
         </>
     )
