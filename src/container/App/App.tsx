@@ -17,12 +17,12 @@ const App = (props: Props) => {
         2: 5,
     })
 
-    const addProductToCart = (id: number, count: number) => {
-        setProductsInCart((prevState) => ({
-            ...prevState,
-            [id]: (prevState[id] || 0) + count,
-        }))
-    }
+    // const addProductToCart = (id: number, count: number) => {
+    //     setProductsInCart((prevState) => ({
+    //         ...prevState,
+    //         [id]: (prevState[id] || 0) + count,
+    //     }))
+    // }
 
     return (
         <>
