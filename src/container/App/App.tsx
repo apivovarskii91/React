@@ -3,6 +3,7 @@ import Header from './Header/Header'
 import Main from './Main/Main'
 import CssBaseline from '@mui/material/CssBaseline'
 import { useState } from 'react'
+import { count } from 'console'
 
 type Props = {}
 
@@ -14,16 +15,19 @@ const App = (props: Props) => {
     const [productsInCart, setProductsInCart] = useState<ProductsInCartType>({
         1: 5,
         2: 5,
-        3: 1,
     })
 
-    const addProductToCart = (count: number, price: number) => {}
+    const addProductToCart = (id: number, count: number) => {
+        setProductsInCart((prevState) => ({
+            [id]: prevState[id] + count,
+        }))
+    }
     return (
         <>
             <CssBaseline />
             <Header productsInCart={productsInCart} />
-            <button onClick={() => addProductToCart(5, 500)}>
-                Add to cart (5 count, 500 $ - price)
+            <button onClick={() => addProductToCart(2, 1)}>
+                Add to cart (2 id, count 1)
             </button>
             <Main addProductToCart={addProductToCart} />
             <Footer />
