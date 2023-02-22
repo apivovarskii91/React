@@ -25,4 +25,3 @@ const CartHeader = ({
     )
 }
 export default CartHeader
-//
