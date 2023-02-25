@@ -70,7 +70,8 @@ export const getProductsObject = (array: Product[]) =>
 array.reduce(
   (object, product) => ({
     ...object,
-    [product.id]: product,  
+    [product.id]: product,
+    [product.price]:product,  
   }),
   {}
 
