@@ -1,26 +1,15 @@
-import { Link } from 'react-router-dom'
-import Button from '@mui/material/Button'
+import MenuItem from './MenuItem'
 
 type Props = {}
 
 const Menu = (props: Props) => {
     return (
         <>
-            <Button color="inherit">
-                <Link to="/">Home</Link>
-            </Button>
-            <Button color="inherit">
-                <Link to="/about">About</Link>
-            </Button>
-            <Button color="inherit">
-                <Link to="/payment">Payment</Link>
-            </Button>
-            <Button color="inherit">
-                <Link to="/shipping">Shipping</Link>
-            </Button>
-            <Button color="inherit">
-                <Link to="/cart">Cart</Link>
-            </Button>
+            <MenuItem to="/">Home</MenuItem>
+            <MenuItem to="/about">About</MenuItem>
+            <MenuItem to="/payment">Payment</MenuItem>
+            <MenuItem to="/shipping">Shipping</MenuItem>
+            <MenuItem to="/cart">Cart</MenuItem>
         </>
     )
 }
