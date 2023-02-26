@@ -2,7 +2,7 @@ import Footer from './Footer/Footer'
 import Header from './Header/Header'
 import CssBaseline from '@mui/material/CssBaseline'
 import { useState } from 'react'
-import { Container } from '@mui/material'
+import { Button, Container } from '@mui/material'
 import Home from 'pages/Home/Home'
 import { Routes, Route } from 'react-router-dom'
 import CartPage from 'pages/CartPage/CartPage'
@@ -18,8 +18,8 @@ type ProductsInCartType = {
 
 const App = (props: Props) => {
     const [productsInCart, setProductsInCart] = useState<ProductsInCartType>({
-        // 1: 5,
-        // 2: 5,
+        1: 5,
+        2: 5,
     })
 
     const addProductToCart = (id: number, count: number) => {
@@ -29,10 +29,19 @@ const App = (props: Props) => {
         }))
     }
 
+    const removeProductFromCart = (id: number) => {
+        setProductsInCart((prevState) => {
+            let prevProductsInCart = { ...prevState }
+            delete prevProductsInCart[id]
+            return prevProductsInCart
+        })
+    }
+
     return (
         <>
             <CssBaseline />
             <Header productsInCart={productsInCart} />
+            <button onClick={() => removeProductFromCart(1)}> Remove</button>
             <Container component="main" sx={{ padding: '60px 0' }}>
                 <Routes>
                     <Route
