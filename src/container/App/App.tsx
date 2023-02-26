@@ -1,9 +1,14 @@
 import Footer from './Footer/Footer'
 import Header from './Header/Header'
-import Main from './Main/Main'
 import CssBaseline from '@mui/material/CssBaseline'
 import { useState } from 'react'
-import { count } from 'console'
+import { Button, Container } from '@mui/material'
+import Home from 'pages/Home/Home'
+import { Routes, Route } from 'react-router-dom'
+import CartPage from 'pages/CartPage/CartPage'
+import AboutPage from 'pages/AbourPage/AboutPage'
+import PaymentPage from 'pages/PaymentPage/PaymentPage'
+import ShippingPage from 'pages/ShippingPage/ShippingPage'
 
 type Props = {}
 
@@ -13,8 +18,8 @@ type ProductsInCartType = {
 
 const App = (props: Props) => {
     const [productsInCart, setProductsInCart] = useState<ProductsInCartType>({
-        // 1: 5,
-        // 2: 5,
+        1: 5,
+        2: 5,
     })
 
     const addProductToCart = (id: number, count: number) => {
@@ -24,11 +29,41 @@ const App = (props: Props) => {
         }))
     }
 
+    const removeProductFromCart = (id: number) => {
+        setProductsInCart((prevState) => {
+            let prevProductsInCart = { ...prevState }
+            delete prevProductsInCart[id]
+            return prevProductsInCart
+        })
+    }
+
     return (
         <>
             <CssBaseline />
             <Header productsInCart={productsInCart} />
-            <Main addProductToCart={addProductToCart} />
+            <button onClick={() => removeProductFromCart(1)}> Remove</button>
+            <Container component="main" sx={{ padding: '60px 0' }}>
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            <Home addProductToCart={addProductToCart}></Home>
+                        }
+                    />
+                    <Route
+                        path="/cart"
+                        element={
+                            <CartPage
+                                productsInCart={productsInCart}
+                                removeProductFromCart={removeProductFromCart}
+                            />
+                        }
+                    ></Route>
+                    <Route path="/about" element={<AboutPage />}></Route>
+                    <Route path="/payment" element={<PaymentPage />}></Route>
+                    <Route path="/shipping" element={<ShippingPage />}></Route>
+                </Routes>
+            </Container>
             <Footer />
         </>
     )
