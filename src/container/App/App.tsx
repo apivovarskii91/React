@@ -41,7 +41,6 @@ const App = (props: Props) => {
         <>
             <CssBaseline />
             <Header productsInCart={productsInCart} />
-            <button onClick={() => removeProductFromCart(1)}> Remove</button>
             <Container component="main" sx={{ padding: '60px 0' }}>
                 <Routes>
                     <Route
