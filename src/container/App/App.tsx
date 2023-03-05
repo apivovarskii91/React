@@ -16,11 +16,19 @@ type Props = {}
 type ProductsInCartType = {
     [id: number]: number
 }
+type ProductsLike = {
+    [id: number]: boolean
+}
 
 const App = (props: Props) => {
     const [productsInCart, setProductsInCart] = useState<ProductsInCartType>({
         1: 5,
         2: 5,
+    })
+
+    const [productsLike, setProductsLike] = useState<ProductsLike>({
+        1: true,
+        3: true,
     })
 
     const addProductToCart = (id: number, count: number) => {
@@ -50,7 +58,10 @@ const App = (props: Props) => {
                     <Route
                         path="/"
                         element={
-                            <Home addProductToCart={addProductToCart}></Home>
+                            <Home
+                                addProductToCart={addProductToCart}
+                                productsLike={productsLike}
+                            ></Home>
                         }
                     />
                     <Route
