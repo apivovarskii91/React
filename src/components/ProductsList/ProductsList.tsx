@@ -7,9 +7,14 @@ type Props = {
     productsLike: {
         [id: number]: boolean
     }
+    toggleLike: (id: number) => void
 }
 
-const ProductsList = ({ addProductToCart, productsLike }: Props) => {
+const ProductsList = ({
+    addProductToCart,
+    productsLike,
+    toggleLike,
+}: Props) => {
     return (
         <>
             <Typography
@@ -43,6 +48,7 @@ const ProductsList = ({ addProductToCart, productsLike }: Props) => {
                                 image={image}
                                 addProductToCart={addProductToCart}
                                 isLiked={productsLike[id]}
+                                toggleLike={toggleLike}
                             />
                         </Grid>
                     )

@@ -6,13 +6,15 @@ type Props = {
     productsLike: {
         [id: number]: boolean
     }
+    toggleLike: (id: number) => void
 }
-const Home = ({ addProductToCart, productsLike }: Props) => {
+const Home = ({ addProductToCart, productsLike, toggleLike }: Props) => {
     return (
         <>
             <ProductsList
                 addProductToCart={addProductToCart}
                 productsLike={productsLike}
+                toggleLike={toggleLike}
             />
             <Reviews />
         </>

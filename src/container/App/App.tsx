@@ -31,6 +31,13 @@ const App = (props: Props) => {
         3: true,
     })
 
+    const toggleLike = (id: number) => {
+        setProductsLike((prevState) => ({
+            ...prevState,
+            [id]: !prevState[id],
+        }))
+    }
+
     const addProductToCart = (id: number, count: number) => {
         setProductsInCart((prevState) => ({
             ...prevState,
@@ -61,6 +68,7 @@ const App = (props: Props) => {
                             <Home
                                 addProductToCart={addProductToCart}
                                 productsLike={productsLike}
+                                toggleLike={toggleLike}
                             ></Home>
                         }
                     />
