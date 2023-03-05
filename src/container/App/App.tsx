@@ -9,11 +9,15 @@ import CartPage from 'pages/CartPage/CartPage'
 import AboutPage from 'pages/AbourPage/AboutPage'
 import PaymentPage from 'pages/PaymentPage/PaymentPage'
 import ShippingPage from 'pages/ShippingPage/ShippingPage'
+import { omit } from 'lodash'
 
 type Props = {}
 
 type ProductsInCartType = {
     [id: number]: number
+}
+type ProductsLike = {
+    [id: number]: boolean
 }
 
 const App = (props: Props) => {
@@ -21,6 +25,18 @@ const App = (props: Props) => {
         1: 5,
         2: 5,
     })
+
+    const [productsLike, setProductsLike] = useState<ProductsLike>({
+        1: true,
+        3: true,
+    })
+
+    const toggleLike = (id: number) => {
+        setProductsLike((prevState) => ({
+            ...prevState,
+            [id]: !prevState[id],
+        }))
+    }
 
     const addProductToCart = (id: number, count: number) => {
         setProductsInCart((prevState) => ({
@@ -30,24 +46,30 @@ const App = (props: Props) => {
     }
 
     const removeProductFromCart = (id: number) => {
-        setProductsInCart((prevState) => {
-            let prevProductsInCart = { ...prevState }
-            delete prevProductsInCart[id]
-            return prevProductsInCart
-        })
+        setProductsInCart((prevState) => omit(prevState, id))
+    }
+
+    const changeProductQuantity = (id: number, count: number) => {
+        setProductsInCart((prevState) => ({
+            ...prevState,
+            [id]: count,
+        }))
     }
 
     return (
         <>
             <CssBaseline />
             <Header productsInCart={productsInCart} />
-            <button onClick={() => removeProductFromCart(1)}> Remove</button>
             <Container component="main" sx={{ padding: '60px 0' }}>
                 <Routes>
                     <Route
                         path="/"
                         element={
-                            <Home addProductToCart={addProductToCart}></Home>
+                            <Home
+                                addProductToCart={addProductToCart}
+                                productsLike={productsLike}
+                                toggleLike={toggleLike}
+                            ></Home>
                         }
                     />
                     <Route
@@ -56,6 +78,7 @@ const App = (props: Props) => {
                             <CartPage
                                 productsInCart={productsInCart}
                                 removeProductFromCart={removeProductFromCart}
+                                changeProductQuantity={changeProductQuantity}
                             />
                         }
                     ></Route>

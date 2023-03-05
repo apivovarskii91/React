@@ -7,6 +7,9 @@ import {
 } from '@mui/material'
 import { Component, useState } from 'react'
 import './ProductsListItem.scss'
+import Quantity from 'components/Quantity/Quantity'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import FavoriteIcon from '@mui/icons-material/Favorite'
 
 type Props = {
     id: number
@@ -17,6 +20,8 @@ type Props = {
     price: number
     image: string
     addProductToCart: (id: number, count: number) => void
+    isLiked: boolean
+    toggleLike: (id: number) => void
 }
 
 const ProductListItem = ({
@@ -28,6 +33,8 @@ const ProductListItem = ({
     price,
     image,
     addProductToCart,
+    isLiked,
+    toggleLike,
 }: Props) => {
     const [count, setCount] = useState<number>(1)
 
@@ -50,6 +57,9 @@ const ProductListItem = ({
     return (
         <Card variant="outlined" className="product">
             <CardContent>
+                <Button variant="outlined" onClick={() => toggleLike(id)}>
+                    {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                </Button>
                 <div className="product-image">
                     <img src={image} alt="" />
                 </div>
@@ -60,23 +70,12 @@ const ProductListItem = ({
                 <div className="product-price">Price:{price}$</div>
                 <p> Color: {color}</p>
                 <button onClick={() => changeColor()}>Change color</button>
-                <div className="product-quantity">
-                    <Button
-                        variant="outlined"
-                        onClick={() => onDecrement()}
-                        disabled={count <= 1}
-                    >
-                        -
-                    </Button>
-                    <TextField size="small" value={count} />
-                    <Button
-                        variant="outlined"
-                        onClick={() => onIncrement()}
-                        disabled={count >= 10}
-                    >
-                        +
-                    </Button>
-                </div>
+                <Quantity
+                    count={count}
+                    onDecrement={onDecrement}
+                    onIncrement={onIncrement}
+                    minCount={1}
+                />
             </CardContent>
             <CardActions className="btns-wrap">
                 <Button
