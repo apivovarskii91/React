@@ -6,3 +6,8 @@ export const store = configureStore({
     productsLike: likeReducer,
   },
 })
+
+
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
