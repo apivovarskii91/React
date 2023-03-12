@@ -11,11 +11,16 @@ const initialState: ProductsLike={
 
 const likeReducer = (state= initialState, action:AnyAction)=>{
   switch(action.type){
-    case 'TOGGLE_LIKE':
+    case 'ADD_LIKE':
       return {
         ...state,
-        [action.id]: !state[action.id],
+        [action.id]: true,
       }
+      case 'REMOVE_LIKE':
+        return {
+          ...state,
+          [action.id]: false,
+        }
       default:
         return state
   }

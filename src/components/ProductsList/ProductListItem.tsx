@@ -60,10 +60,15 @@ const ProductListItem = ({
                 <Button
                     variant="outlined"
                     onClick={() =>
-                        dispatch({
-                            type: 'TOGGLE_LIKE',
-                            id,
-                        })
+                        isLiked
+                            ? dispatch({
+                                  type: 'REMOVE_LIKE',
+                                  id,
+                              })
+                            : dispatch({
+                                  type: 'ADD_LIKE',
+                                  id,
+                              })
                     }
                 >
                     {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
