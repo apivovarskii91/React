@@ -9,9 +9,16 @@ const initialState: ProductsLike={
   2:true,
 }
 
-
 const likeReducer = (state= initialState, action:AnyAction)=>{
-  return state
+  switch(action.type){
+    case 'TOGGLE_LIKE':
+      return {
+        ...state,
+        [action.id]: !state[action.id],
+      }
+      default:
+        return state
+  }
 }
 
 export default likeReducer
