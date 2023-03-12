@@ -11,6 +11,7 @@ import Quantity from 'components/Quantity/Quantity'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
+import { addLike, removeLike } from 'redux/likeReducer'
 
 type Props = {
     id: number
@@ -61,14 +62,8 @@ const ProductListItem = ({
                     variant="outlined"
                     onClick={() =>
                         isLiked
-                            ? dispatch({
-                                  type: 'REMOVE_LIKE',
-                                  id,
-                              })
-                            : dispatch({
-                                  type: 'ADD_LIKE',
-                                  id,
-                              })
+                            ? dispatch(removeLike(id))
+                            : dispatch(addLike(id))
                     }
                 >
                     {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
