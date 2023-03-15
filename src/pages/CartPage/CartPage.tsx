@@ -2,6 +2,7 @@ import { Grid, Typography } from '@mui/material'
 import CartProductList from 'components/CartHeader/CartProductList/CartProductList'
 import CartProductListItemExtended from 'components/CartHeader/CartProductList/CartProductListItemExtended'
 import CartTotal from 'components/CartTotal/CartTotal'
+import { toggleLike } from 'redux/likeReducer'
 
 type Props = {
     productsInCart: {
