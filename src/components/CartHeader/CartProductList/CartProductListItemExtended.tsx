@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from 'redux/hooks'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import { toggleLike } from 'redux/likeReducer'
+import { removeProductFromCart } from 'redux/cartReducer'
 
 type Props = {
     product: Product
@@ -16,7 +17,6 @@ type Props = {
 const CartProductListItemExtended = ({
     product,
     productCount,
-    removeProductFromCart,
     changeProductQuantity,
 }: Props) => {
     const isLiked = useAppSelector((state) => state.productsLike[product.id])
@@ -55,7 +55,7 @@ const CartProductListItemExtended = ({
                 </CardContent>
                 <Button
                     variant="outlined"
-                    onClick={() => removeProductFromCart(product.id)}
+                    onClick={() => dispatch(removeProductFromCart(product.id))}
                 >
                     <DeleteIcon />
                 </Button>
