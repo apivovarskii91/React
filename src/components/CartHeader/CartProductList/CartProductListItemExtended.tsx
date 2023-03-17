@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from 'redux/hooks'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import { toggleLike } from 'redux/likeReducer'
-import { removeProductFromCart } from 'redux/cartReducer'
+import { changeProductQuantity, removeProductFromCart } from 'redux/cartReducer'
 
 type Props = {
     product: Product
@@ -14,11 +14,7 @@ type Props = {
     removeProductFromCart: (id: number) => void
     changeProductQuantity: (id: number, count: number) => void
 }
-const CartProductListItemExtended = ({
-    product,
-    productCount,
-    changeProductQuantity,
-}: Props) => {
+const CartProductListItemExtended = ({ product, productCount }: Props) => {
     const isLiked = useAppSelector((state) => state.productsLike[product.id])
     const dispatch = useAppDispatch()
     return (
@@ -42,13 +38,22 @@ const CartProductListItemExtended = ({
                         onDecrement={() =>
                             productCount === 1
                                 ? removeProductFromCart(product.id)
-                                : changeProductQuantity(
-                                      product.id,
-                                      productCount - 1
+                                : dispatch(
+                                      changeProductQuantity({
+                                          id: product.id,
+                                          count: productCount - 1,
+                                      })
                                   )
                         }
                         onIncrement={() =>
-                            changeProductQuantity(product.id, productCount + 1)
+                            dispatch(
+                                dispatch(
+                                    changeProductQuantity({
+                                        id: product.id,
+                                        count: productCount + 1,
+                                    })
+                                )
+                            )
                         }
                         minCount={0}
                     />
