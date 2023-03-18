@@ -8,6 +8,7 @@ import AboutPage from 'pages/AbourPage/AboutPage'
 import PaymentPage from 'pages/PaymentPage/PaymentPage'
 import ShippingPage from 'pages/ShippingPage/ShippingPage'
 import Home from 'pages/Home/Home'
+import CheckoutPage from 'pages/CheckoutPage/CheckoutPage'
 
 type Props = {}
 
@@ -23,6 +24,7 @@ const App = (props: Props) => {
                     <Route path="/about" element={<AboutPage />}></Route>
                     <Route path="/payment" element={<PaymentPage />}></Route>
                     <Route path="/shipping" element={<ShippingPage />}></Route>
+                    <Route path="/checkout" element={<CheckoutPage />}></Route>
                 </Routes>
             </Container>
             <Footer />
