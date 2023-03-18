@@ -9,12 +9,8 @@ import Logo from 'components/Logo/Logo'
 import Menu from 'components/Menu/Menu'
 import CartHeader from 'components/CartHeader/CartHeader'
 
-type Props = {
-    productsInCart: {
-        [id: number]: number
-    }
-}
-const Header = ({ productsInCart }: Props) => {
+type Props = {}
+const Header = (props: Props) => {
     return (
         <>
             <AppBar
@@ -36,7 +32,7 @@ const Header = ({ productsInCart }: Props) => {
                         </IconButton>
                         <Logo />
                         <Menu />
-                        <CartHeader productsInCart={productsInCart} />
+                        <CartHeader />
                         <Button color="inherit">Login</Button>
                     </Toolbar>
                 </Container>
