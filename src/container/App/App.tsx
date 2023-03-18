@@ -9,10 +9,19 @@ import PaymentPage from 'pages/PaymentPage/PaymentPage'
 import ShippingPage from 'pages/ShippingPage/ShippingPage'
 import Home from 'pages/Home/Home'
 import CheckoutPage from 'pages/CheckoutPage/CheckoutPage'
+import { useAppDispatch } from 'redux/hooks'
+import { useEffect } from 'react'
+import { fetchProducts } from 'redux/productsReducer'
 
 type Props = {}
 
 const App = (props: Props) => {
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        dispatch(fetchProducts())
+    })
+
     return (
         <>
             <CssBaseline />
